@@ -1,13 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+ font-family: 'Space Grotesk', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+ font-family: 'Space Grotesk', sans-serif;
+}
+
+.left-bg {
+  background-image: url("./assets/Images/bg-main-desktop.png");
+  background-position: fixed center;
+
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+label{
+  font-weight: 700;
+}
+button{
+  color: white;
+}
+.card1{
+  width: 550px;
+}
+.dot {
+  height: 50px;
+  width: 50px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dot-small {
+  height: 25px;
+  width:25px;
+  background-color: none;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: inline-block;
+}
+@media only screen and (max-width: 600px) {
+ .left-bg {
+  background-image: url("./assets/Images/bg-main-mobile.png");
+  background-position: fixed center;
+
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.dot-small {
+  height: 15px;
+  width:15px;
+  background-color: none;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: inline-block;
+}
+.card1{
+    width:300px;
+  }
+  .dot {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+}
 }
