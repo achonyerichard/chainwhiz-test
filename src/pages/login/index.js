@@ -7,6 +7,7 @@ const Login = () => {
   const [card, setCard] = useState("0000 0000 0000 0000");
   const [month, setMonth] = useState("00");
   const [year, setYear] = useState("00");
+  const [cvv, setCvv] = useState('000')
   const onNameChange = (e) => {
     e.preventDefault();
     setName(e.target.value);
@@ -35,7 +36,7 @@ const Login = () => {
     e.preventDefault();
     if (e.target.value === "") {
       setMonth("00");
-    } else setYear(e.target.value);
+    } else setMonth(e.target.value);
   };
   const onYearChange = (e) => {
     e.preventDefault();
@@ -44,13 +45,20 @@ const Login = () => {
       setYear("00");
     } else setYear(e.target.value);
   };
+  const onCvvChange = (e) => {
+    e.preventDefault();
+
+    if (e.target.value === "") {
+      setCvv("000");
+    } else setCvv(e.target.value);
+  };
   return (
     <>
       <div>
         <div className="md:flex flex-wrap  ">
           <div className="w-full md:w-1/3 left-bg md:h-screen h-60">
-            <div className="md:py-40 md:ml-40">
-              <div className="card1 top-36 md:top-0 mb-10 right-6 md:right-0 z-10  md:left-40 h-40 md:h-72 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
+            <div className="md:py-40 md:ml-10 lg:ml-40">
+              <div className="card1 top-36 md:top-0 mb-10 right-6 md:right-0 z-10 md:left-20 lg:left-40 h-40 md:h-64 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
                 <img
                   className="relative object-cover w-full h-full rounded-xl"
                   src={CardFront}
@@ -66,7 +74,7 @@ const Login = () => {
                     </div>
                   </div>
                   <div className="md:pt-16 pt-6">
-                    <p className=" text-[color:white] md:text-4xl tracking-widest">
+                    <p className=" text-[color:white] md:text-2xl tracking-widest">
                       {card}
                     </p>
                   </div>
@@ -87,7 +95,7 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-              <div className="card1 bottom-40 md:bottom-0 md:ml-40 left-7 md:left-40 md:h-72 h-40 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
+              <div className="card1 bottom-40 md:bottom-0 md:ml-20 lg:ml-40 left-7 md:left-20 md:h-64 h-40 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
                 <img
                   className="relative object-cover w-full h-full rounded-xl"
                   src={CardBack}
@@ -101,8 +109,8 @@ const Login = () => {
                       <div className=""></div>
                       <div className=""></div>
 
-                      <div className="md:pt-5 -pt-5 md:-pt-0">
-                        <p className=" text-[color:white] md:text-lg">000</p>
+                      <div className="md:pt-2 -pt-5 md:-pt-0">
+                        <p className=" text-[color:white] md:text-lg">{cvv}</p>
                       </div>
                     </div>
                   </div>
@@ -148,7 +156,7 @@ const Login = () => {
                   </div>
                   <div className="flex flex-wrap  ">
                     <div className="flex flex-wrap w-full md:w-1/2 gap-x-2">
-                      <div className=" md:w-1/3">
+                      <div className=" md:w-1/2">
                         <div className="form-group mb-6">
                           <label
                             htmlFor="exampleInputPassword1"
@@ -165,7 +173,7 @@ const Login = () => {
                           />
                         </div>
                       </div>
-                      <div className=" md:w-1/3 ">
+                      <div className=" md:w-1/3 md:pl-2 ">
                         <div className="form-group mb-6">
                           <label
                             htmlFor="exampleInputPassword1"
@@ -192,7 +200,8 @@ const Login = () => {
                           CVC
                         </label>
                         <input
-                          type="password"
+                        onChange={onCvvChange}
+                          type="number"
                           className="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                           id="exampleInputPassword1"
                           placeholder="e.g. 123"

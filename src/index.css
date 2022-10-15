@@ -30,7 +30,7 @@ button{
   color: white;
 }
 .card1{
-  width: 550px;
+  width:400px;
 }
 .dot {
   height: 50px;
@@ -48,6 +48,36 @@ button{
   display: inline-block;
 }
 @media only screen and (max-width: 600px) {
+ .left-bg {
+  background-image: url("./assets/Images/bg-main-mobile.png");
+  background-position: fixed center;
+
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.dot-small {
+  height: 15px;
+  width:15px;
+  background-color: none;
+  border-radius: 50%;
+  border: 1px solid white;
+  display: inline-block;
+}
+.card1{
+    width:300px;
+  }
+  .dot {
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+}
+}
+@media only screen and (max-width: 768px) {
  .left-bg {
   background-image: url("./assets/Images/bg-main-mobile.png");
   background-position: fixed center;
