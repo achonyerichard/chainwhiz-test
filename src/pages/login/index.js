@@ -1,19 +1,49 @@
 import React, { useState } from "react";
-import CardFront from "../../assets/Images/bg-card-front.png"
+import CardFront from "../../assets/Images/bg-card-front.png";
 import CardBack from "../../assets/Images/bg-card-back.png";
 
-
 const Login = () => {
-    const [name, setName] = useState("Jane Appleseed");
-    const [card, setCard] = useState("0000 0000 0000 0000");
-    const onNameChange=(e)=>{
-        e.preventDefault()
-        setName(e.target.value)
+  const [name, setName] = useState("Jane Appleseed");
+  const [card, setCard] = useState("0000 0000 0000 0000");
+  const [month, setMonth] = useState("00");
+  const [year, setYear] = useState("00");
+  const onNameChange = (e) => {
+    e.preventDefault();
+    setName(e.target.value);
+  };
+  const onCardChange = (e) => {
+    e.preventDefault();
+    if (e.target.value === "") {
+      setCard("0000 0000 0000 0000");
+    } else {
+      let cardValue = "";
+      const cardNull = "00000000000000000";
+      if (e.target.value.length <= 16) {
+        const remain = 16 - e.target.value.length;
+        cardValue = `${e.target.value}${cardNull.substring(0, remain - 1)}`
+        console.log(cardValue)
+        setCard(
+          `${cardValue.substring(0, 4)} ${cardValue.substring(
+            4,
+            8
+          )} ${cardValue.substring(8, 12)} ${cardValue.substring(12, 17)}`
+        );
+      }
     }
-    const onCardChange = (e)=>{
-        e.preventDefault()
-        setCard(e.target.value)
-    }
+  };
+  const onMonthChange = (e) => {
+    e.preventDefault();
+    if (e.target.value === "") {
+      setMonth("00");
+    } else setYear(e.target.value);
+  };
+  const onYearChange = (e) => {
+    e.preventDefault();
+
+    if (e.target.value === "") {
+      setYear("00");
+    } else setYear(e.target.value);
+  };
   return (
     <>
       <div>
@@ -37,7 +67,7 @@ const Login = () => {
                   </div>
                   <div className="md:pt-16 pt-6">
                     <p className=" text-[color:white] md:text-4xl tracking-widest">
-                      {[...card].map((d,i)=>(i) % 4 == 0 ? '' + d :d).join('').trim()}
+                      {card}
                     </p>
                   </div>
                   <div className="pt-6 pr-6">
@@ -50,7 +80,7 @@ const Login = () => {
 
                       <div className="">
                         <p className="  text-[color:white] md:text-lg text-xs uppercase tracking-wider ">
-                          00/00
+                          <span>{month}</span>/ <span>{year}</span>
                         </p>
                       </div>
                     </div>
@@ -94,7 +124,8 @@ const Login = () => {
                     <input
                       type="email"
                       className="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white  border border-solid border-gray-300 border-rounded-lg rounded transition ease-in-out m-0
-       "                onChange={onNameChange}
+       "
+                      onChange={onNameChange}
                       id="exampleInputEmail1"
                       aria-describedby="emailHelp"
                       placeholder="e.g Jane Appleseed"
@@ -108,11 +139,11 @@ const Login = () => {
                       CARD NUMBER
                     </label>
                     <input
-                    onChange={onCardChange}
+                      onChange={onCardChange}
                       type="number"
                       className="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                       id="exampleInputPassword1"
-                      placeholder="Password"
+                      placeholder="e.g. 1234 5678 9123 0000"
                     />
                   </div>
                   <div className="flex flex-wrap  ">
@@ -126,7 +157,8 @@ const Login = () => {
                             EXP. DATE
                           </label>
                           <input
-                            type="password"
+                            onChange={onMonthChange}
+                            type="number"
                             className="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="exampleInputPassword1"
                             placeholder="MM"
@@ -142,7 +174,8 @@ const Login = () => {
                             (MM/YY)
                           </label>
                           <input
-                            type="password"
+                            type="number"
+                            onChange={onYearChange}
                             className="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                             id="exampleInputPassword1"
                             placeholder="YY"
