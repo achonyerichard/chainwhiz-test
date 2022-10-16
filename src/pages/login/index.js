@@ -56,18 +56,19 @@ const Login = () => {
   };
 
   const onSubmit=()=>{
-    if(name.length >0 && card.lenght >0 && month.length>0 && year.length>0 && cvv.length >0){
+    if(name.length >0 && card.length >0 && month.length>0 && year.length>0 && cvv.length >0){
         setSubmit(true)
     }else setSubmit(false)
-    alert("Please fill all details")
+    alert("Fill all details")
+   
   }
   return (
     <>
       <div>
         <div className="md:flex flex-wrap  ">
           <div className="w-full md:w-1/3 left-bg md:h-screen h-60">
-            <div className="md:py-40 md:ml-10 lg:ml-40">
-              <div className="card1 top-36 md:top-0 mb-10 right-6 md:right-0 z-10 md:left-20 lg:left-20 h-40 md:h-64 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
+            <div className="md:py-40 md:ml-40 lg:ml-40">
+              <div className="card1 top-36 md:top-0 mb-10 right-6 md:ml-28 md:right-0 z-10 md:left-40 lg:left-40 h-40 md:h-64 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
                 <img
                   className="relative object-cover w-full h-full rounded-xl"
                   src={CardFront}
@@ -104,7 +105,7 @@ const Login = () => {
                   </div>
                 </div>
               </div>
-              <div className="card1 bottom-40 md:bottom-0 md:ml-20 lg:ml-20 left-7 md:left-20 md:h-64 h-40 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
+              <div className="card1 bottom-40 md:bottom-0 md:ml-40 lg:ml-40 left-7 md:left-40 md:h-64 h-40 m-auto bg-red-100 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110 ">
                 <img
                   className="relative object-cover w-full h-full rounded-xl"
                   src={CardBack}
@@ -183,7 +184,7 @@ const Login = () => {
                         CARDHOLDER NAME
                       </label>
                       <input
-                        type="email"
+                        type="text"
                         className="form-control block w-full px-3 py-3 text-base font-normal text-gray-700 bg-white  border border-solid border-gray-300 border-rounded-lg rounded transition ease-in-out m-0
        "
                         onChange={onNameChange}
